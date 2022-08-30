@@ -3,6 +3,7 @@ require_relative './decorator'
 class Person
   attr_accessor :name, :age
   attr_reader :id
+
   def initialize(age, name = 'unknown', parent_permission: true)
     @id = Random.rand(1..100)
     @name = name
