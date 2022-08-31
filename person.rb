@@ -13,9 +13,11 @@ class Person
     @parent_permission = parent_permission
     @rentals = []
   end
+
   def add_rental(book)
     Rental.new(person: self, book: book)
   end
+
   def can_use_services?
     @age >= 18 || @parent_permission
   end
