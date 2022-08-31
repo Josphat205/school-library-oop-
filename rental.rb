@@ -1,8 +1,7 @@
 require 'time'
 
 class Rental
-  attr_reader :person, :book
-  attr_accessor :date
+  attr_accessor :date, :person, :book
 
   def initialize(person:, book:)
     @date = DateTime.now.strftime('%Y/%m/%d %H:%M')
