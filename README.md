@@ -6,6 +6,14 @@ This project is an OOP school library that adds new students, teachers, and book
 
 - Ruby
 
+## Installation
+
+- clone git@github.com:Josphat205/school-library-oop-.git
+- cd school-library-oop-
+
+## Run
+
+- Run Ruby file name
 ## Authors
 
 👤 **Josphat Kiploman**
