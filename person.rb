@@ -2,16 +2,18 @@ require_relative './nameable'
 require_relative './decorator'
 require_relative './rental'
 class Person
-  attr_accessor :name, :age, :rentals
-  attr_reader :id
+  attr_accessor :name, :age, :rentals, :classroom, :id
 
-  def initialize(age, name = 'unknown', parent_permission: true)
+  @@people = []
+  def initialize(age, name, classroom, parent_permission: true)
     super()
     @id = Random.rand(1..100)
     @name = name
     @age = age
     @parent_permission = parent_permission
     @rentals = []
+    @@people << self
+    @classroom = classroom
   end
 
   def add_rental(book)
