@@ -4,7 +4,7 @@ require_relative './rental'
 class Person
   attr_accessor :name, :age, :rentals, :classroom, :id
 
-  @@people = []
+   @people = []
   def initialize(age, name, classroom, parent_permission: true)
     super()
     @id = Random.rand(1..100)
