@@ -21,9 +21,9 @@ class Lister
     end
   end
 
-  def self.get_people(_people)
+  def self.get_people(people)
     puts '-' * 50
-    if @people.empty?
+    if people.empty?
       puts 'The list is empty'
     else
       puts 'People list:'
