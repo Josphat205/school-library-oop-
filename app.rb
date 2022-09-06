@@ -3,9 +3,15 @@ require_relative 'rental'
 require_relative 'book'
 require_relative 'person'
 require_relative 'student'
+require_relative 'creator'
 require 'pry'
 
 class App
+  def initialize
+    @books = Book.class_variable_get(:@@books)
+    @people = Person.class_variable_get(:@@people)
+  end
+
   def execute
     puts 'Welcome to Our Library'
     loop do
@@ -17,26 +23,16 @@ class App
   end
 
   def list_books
-    puts '-' * 50
-    books = Book.class_variable_get(:@@books)
-    if books.empty?
-      puts 'The books list is empty'
-    else
-      puts 'Books list:'
-      books.each_with_index do |book, index|
-        puts "[Book #{index}] Title: #{book.title} | Author: #{book.author}"
-      end
-    end
+    Creator.get_books(@books)
   end
 
   def list_people
     puts '-' * 50
-    people = Person.class_variable_get(:@@people)
-    if people.empty?
+    if @people.empty?
       puts 'The list is empty'
     else
       puts 'People list:'
-      people.each_with_index do |person, index|
+      @people.each_with_index do |person, index|
         if person.is_a?(Teacher)
           puts "[Teacher #{index}] ID: #{person.id}
           | Name: #{person.name} | Age: #{person.age} "
@@ -64,18 +60,7 @@ class App
   end
 
   def create_student
-    puts "Student\'s name : "
-    name = gets.chomp
-    puts "Student\'s age: "
-    age = gets.chomp
-    puts "Student\'s classroom: "
-    classroom = gets.chomp
-    puts "Has parent\'s persmission? [Y/N]: "
-    parent_permission = gets.chomp
-    true if parent_permission == ('y' || 'Y')
-    false if parent_permission == ('n' || 'N')
-    Student.new(age, name, classroom)
-    puts "Student (#{name}) has been created successfully"
+    Creator.create_student
   end
 
   def create_teacher
