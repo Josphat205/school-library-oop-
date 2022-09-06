@@ -29,6 +29,7 @@ class Creator
     Teacher.new(age, name, specialization)
     puts "Teacher (#{name}) has been created successfully"
   end
+
   def self.create_book
     puts "Book\'s title: "
     title = gets.chomp
@@ -37,7 +38,8 @@ class Creator
     Book.new(title, author)
     puts "Book (#{title} By #{author}) has been created successfully"
   end
-  def self.create_rental(books,people)
+
+  def self.create_rental(books, people)
     if books.empty?
       puts 'Books list is empty, please create a book first'
     elsif people.empty?
@@ -49,7 +51,7 @@ class Creator
       end
       book_number = gets.chomp.to_i
       puts 'Select a person from the following list by number'
-       App.new.people_list
+      App.new.people_list
       person_number = gets.chomp.to_i
       puts 'Date: '
       date = gets.chomp

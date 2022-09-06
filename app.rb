@@ -12,7 +12,8 @@ class App
     @books = Book.class_variable_get(:@@books)
     @people = Person.class_variable_get(:@@people)
   end
-  def people_list(@people)
+
+  def people_list
     @people.each_with_index do |person, index|
       if person.is_a?(Teacher)
         puts "[Teacher #{index}] ID: #{person.id}
@@ -31,6 +32,7 @@ class App
       list_of_options
       input = gets.chomp.to_i
       break if input == 7
+
       operation(input)
     end
   end
@@ -62,18 +64,18 @@ class App
   end
 
   def create_teacher
-   Creator.create_teacher
+    Creator.create_teacher
   end
 
   def create_book
-   Creator.create_book
+    Creator.create_book
   end
 
   def create_rental
-    Creator.create_rental(@books,@people)
+    Creator.create_rental(@books, @people)
   end
 
   def list_rentals
-   Lister.get_rental(@people)
+    Lister.get_rental(@people)
   end
 end
